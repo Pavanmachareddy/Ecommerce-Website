@@ -1,32 +1,38 @@
-import './App.css';
-import { useState } from 'react';
-import Header from './component/Layout/Header/Header';
-import Music from './component/Layout/Music/Music';
-import Merch from './component/Layout/Merch/Merch';
-import Footer from './component/Layout/Footer/Footer';
-import Cart from './Cart/Cart';
+import "./App.css";
+import { useState } from "react";
+import Header from "./component/Layout/Header/Header";
+import Store from "./component/Pages/Store";
+import Home from "./component/Pages/Home";
+import About from "./component/Pages/About";
+import Footer from "./component/Layout/Footer/Footer";
+import CartList from "./Cart/CartList";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import CartContext from "./component/StoreContext/CartContext";
 
 function App() {
-  const [cartItems,setCartItems] = useState(false)
+  const [cartItems, setCartItems] = useState(false);
 
-  const CartItems = () =>{
+  const CartItems = () => {
     setCartItems(true);
-  }
-  
-  const cartItemsClose = () =>{
+  };
+
+  const cartItemsClose = () => {
     setCartItems(false);
-  }
-  
+  };
+
   return (
-    
-    <div>
-      <Header showCartItem={CartItems}/>
-    {cartItems &&  <Cart  Close = {cartItemsClose}/>}
-      <Music />
-      <Merch />
-      <button  className='cart-btn-bottom'>See the Cart</button>
-    <Footer />
-    </div>
+    <CartContext>
+      <Header showCartItem={CartItems} />
+      {cartItems && <CartList Close={cartItemsClose} />}
+
+      <Routes>
+        <Route exact path="/" element={<Store />} />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/homepage" element={<Home />} />
+      </Routes>
+      <button className="cart-btn-bottom">See the Cart</button>
+      <Footer />
+    </CartContext>
   );
 }
 

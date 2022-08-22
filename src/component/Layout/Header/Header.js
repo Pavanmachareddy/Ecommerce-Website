@@ -1,29 +1,23 @@
-import React from "react";
-import classes from './Header.module.css';
+import React, { useContext } from "react";
+import classes from "./Header.module.css";
+import { Link } from "react-router-dom";
+import { Cart } from "../../StoreContext/CartContext";
 
 const Header = (props) => {
+  const { cart } = useContext(Cart);
   return (
-    <div >
-    <div className={classes.headBody}>
-    <ul className={classes.list}>
-        <a href="#">
-          <li>HOME</li>
-        </a>
-        <a href="#">
-          <li>STORE</li>
-        </a>
-        <a href="#">
-          <li>ABOUT</li>
-        </a>
-        <a href="#" className={classes.cart} onClick={props.showCartItem}>cart<span className={classes.cartnumber}>0</span></a>
-      </ul>
+    <div>
+      <div className={classes.headBody}>
+        <ul className={classes.list}><a href="/homepage"><li>HOME</li></a>
+          <Link to="/"><li>STORE</li></Link>
+          <Link to="/about"><li>ABOUT</li></Link>
+          <a href="#" className={classes.cart} onClick={props.showCartItem}>
+            cart<span className={classes.cartnumber}>{cart.Length}</span>
+          </a>
+        </ul>
 
-      
         <h1>The Generics</h1>
-
-    </div>
-      
-      
+      </div>
     </div>
   );
 };

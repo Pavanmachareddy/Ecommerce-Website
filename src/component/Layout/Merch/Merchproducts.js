@@ -5,7 +5,7 @@ import classes from './Merchproducts.module.css';
 const merchArr = [
     {
         title: "T-Shirt",
-        price: 200,
+        price:200,
         imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Shirt.png",
     },
     {
@@ -27,7 +27,7 @@ const Merchproducts = () => {
                 <img src={items.imageUrl} alt="Merch Pictures"/>
             </li>
             <li className={classes.merchDetail}>
-                <span>${items.price}</span>
+                <span>₹{items.price}</span>
                 <button className={classes.merchBtn}>ADD TO CART</button>
             </li>
 

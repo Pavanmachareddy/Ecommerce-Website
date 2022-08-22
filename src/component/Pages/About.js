@@ -1,4 +1,5 @@
 import React from "react";
+import BandImage from '../../assets/Band.png';
 
 const About = () => {
   return (
@@ -6,7 +7,7 @@ const About = () => {
       <h1>The Generics</h1>
       <h3>ABOUT</h3>
       <div>
-        <img src="./img/Band Members.png" alt />
+        <img src={BandImage} alt />
         <p>
           "Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
           sorrows, hates no prosecutors will unfold in the enduring of which

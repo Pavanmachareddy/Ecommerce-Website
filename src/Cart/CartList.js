@@ -1,29 +1,12 @@
 import React from "react";
 import classes from "./Cart.module.css";
 import { Container, Row, Col, Button } from "reactstrap";
+import { Cart } from "../component/StoreContext/CartContext";
+import { useContext } from "react";
 
-const cartElements = [
-  {
-    title: "Black and blue Colors",
-    price: 100,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    quantity: 2,
-  },
-  {
-    title: "Black and white Colors",
-    price: 50,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    quantity: 3,
-  },
-  {
-    title: "Yellow and Black Colors",
-    price: 70,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    quantity: 1,
-  },
-];
+const CartList = (props) => {
 
-const Cart = (props) => {
+  const {cart} =useContext(Cart)
   return(
   <section className={classes.cartBody}>
       <Button className={classes.styleBtn} onClick={props.Close}>X</Button>
@@ -43,7 +26,7 @@ const Cart = (props) => {
           <hr />
         </Col>
       </Row>
-      {cartElements.map((items) => {
+      {cart.map((items) => {
         return (
           <Container style={{ marginTop: "20px" }}>
             <Row>
@@ -59,18 +42,11 @@ const Cart = (props) => {
             </Row>
 
           </Container>
-
-          // <ul className={styles.cartList}>
-          //     <li><img className={styles.cartImages} src={items.imageUrl}/></li>
-          //     <li className={styles.cartTitle}>{items.title}</li>
-          //     <li className={styles.cartPrice}>{items.price}</li>
-          //     <li className={styles.cartQuantity}>{items.quantity}</li>
-          // </ul>
         );
       })}
     </section>
   );
 };
 
-export default Cart;
+export default CartList;
 
