@@ -4,7 +4,6 @@ import BandImage from '../../assets/Band.png';
 const About = () => {
   return (
     <div>
-      <h1>The Generics</h1>
       <h3>ABOUT</h3>
       <div>
         <img src={BandImage} alt />
