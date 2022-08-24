@@ -1,0 +1,21 @@
+.contactBody{
+    margin-top: 2%;
+    text-align:center;
+}
+
+.contactForm{
+    width:900px;
+    text-align: center;
+    margin-top: 4%;
+    display: block;
+    margin-left:2%;
+    padding:1%;
+}
+
+.contactName .contactEmail .contactPhone{
+    margin-left:1%;
+    margin-right:1%;
+}
+.contactBtn{
+    margin-top:1%;
+}
