@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import classes from "./Header.module.css";
 import { Cart } from "../../StoreContext/CartContext";
 import { NavLink } from "react-router-dom";
+import './NavLink.css'
 
 const Header = (props) => {
   const { cart } = useContext(Cart);

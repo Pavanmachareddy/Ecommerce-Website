@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Cart } from '../../StoreContext/CartContext';
 import classes from './Merchproducts.module.css';
 
 
@@ -7,16 +8,19 @@ const merchArr = [
         title: "T-Shirt",
         price:200,
         imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Shirt.png",
+        quantity: 1,
     },
     {
         title: "Coffee Cup",
         price:10,
         imageUrl:  "https://prasadyash2411.github.io/ecom-website/img/Cofee.png",
+        quantity: 1,
 
     },
 ];
 
 const Merchproducts = () => {
+    const {cart,setCart} = useContext(Cart)
   return (
     <section className={classes.merchSection}>
     {merchArr.map((items) =>{
@@ -28,7 +32,14 @@ const Merchproducts = () => {
             </li>
             <li className={classes.merchDetail}>
                 <span>₹{items.price}</span>
-                <button className={classes.merchBtn}>ADD TO CART</button>
+                {/* <span>₹{items.quantity}</span> */}
+                {cart.includes(items)?(
+              <button className={classes.merchBtn} onClick={()=> {
+                      setCart(cart.filter((c) => c.title !==items.title));
+                    }}>Remove From Cart</button>
+                  ): <button className={classes.merchBtn} onClick={()=> {
+                    setCart([...cart, items])
+                  }}>ADD TO CART</button>}
             </li>
 
             </ul>

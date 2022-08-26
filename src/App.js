@@ -6,9 +6,10 @@ import Home from "./component/Pages/Home/Home";
 import About from "./component/Pages/About/About";
 import Footer from "./component/Layout/Footer/Footer";
 import CartList from "./Cart/CartList";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import CartContext from "./component/StoreContext/CartContext";
 import Contact from "./component/Pages/Contact/Contact";
+import Product from "./component/Layout/Products/Product";
 
 function App() {
   const [cartItems, setCartItems] = useState(false);
@@ -45,6 +46,7 @@ function App() {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/homepage" element={<Home />} />
         <Route exact path="/contact" element={<Contact  addRequest={addRequestHandler}/>} />
+        <Route  path='/product/:id' element={<Product/>}/>
       </Routes>
       <button className="cart-btn-bottom">See the Cart</button>
       <Footer />
