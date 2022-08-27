@@ -10,6 +10,7 @@ import { Routes, Route } from "react-router-dom";
 import CartContext from "./component/StoreContext/CartContext";
 import Contact from "./component/Pages/Contact/Contact";
 import Product from "./component/Layout/Products/Product";
+import Login from "./component/Pages/Login/Login";
 
 function App() {
   const [cartItems, setCartItems] = useState(false);
@@ -47,8 +48,9 @@ function App() {
         <Route exact path="/homepage" element={<Home />} />
         <Route exact path="/contact" element={<Contact  addRequest={addRequestHandler}/>} />
         <Route  path='/product/:id' element={<Product/>}/>
+        <Route  exact path='/login' element={<Login/>}/>
       </Routes>
-      <button className="cart-btn-bottom">See the Cart</button>
+      
       <Footer />
     </CartContext>
   );

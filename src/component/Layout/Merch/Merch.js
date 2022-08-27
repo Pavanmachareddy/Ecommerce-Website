@@ -7,6 +7,7 @@ const Merch = () => {
     <div className={classes.merchBody}>
       <h2>MERCH</h2>
       <Merchproducts />
+      <button className={classes.cartbtn}>See the Cart</button>
     </div>
   )
 }
