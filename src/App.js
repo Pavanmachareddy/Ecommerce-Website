@@ -11,6 +11,7 @@ import CartContext from "./component/StoreContext/CartContext";
 import Contact from "./component/Pages/Contact/Contact";
 import Product from "./component/Layout/Products/Product";
 import Login from "./component/Pages/Login/Login";
+import UserProfile from "./component/Pages/Profile/UserProfile";
 
 function App() {
   const [isLoggedIn,setIsloggedIn] = useState(false);
@@ -44,6 +45,7 @@ function App() {
       {cartItems && <CartList Close={cartItemsClose} />}
 
       <Routes>
+      <Route exact path="/profile" element={<UserProfile/>} />
         <Route exact path="/store" element={<Store />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/homepage" element={<Home />} />

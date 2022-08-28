@@ -16,10 +16,20 @@ const Header = (props) => {
           {/* <a href="/homepage"><li>HOME</li></a>
           <Link to="/"><li>STORE</li></Link>
           <Link to="/about"><li>ABOUT</li></Link> */}
+          
           {isLoggedIn && (
             <NavLink
               className={(navData) => (navData.isActive ? "active" : "")}
-              to="/"
+              to="/profile"
+            >
+              <li>Profile</li>
+            </NavLink>
+          )}
+          
+          {isLoggedIn && (
+            <NavLink
+              className={(navData) => (navData.isActive ? "active" : "")}
+              to="/homepage"
             >
               <li>Home</li>
             </NavLink>
