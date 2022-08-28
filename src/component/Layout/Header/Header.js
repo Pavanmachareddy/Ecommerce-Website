@@ -8,6 +8,11 @@ const Header = (props) => {
   const { cart,contextValue } = useContext(CartContext);
 
   const isLoggedIn = contextValue.isLoggedIn;
+
+  const logoutHandler = () => {
+    contextValue.logout();
+    //optional: redirect the user
+  }
   // console.log(cart)
   return (
     <div>
@@ -67,9 +72,12 @@ const Header = (props) => {
             </NavLink>
           )}
           {isLoggedIn && (
-            <li>
-              <button>Logout</button>
-            </li>
+            <NavLink
+              className={(navData) => (navData.isActive ? "active" : "")}
+              to="/login"
+            >
+              <li>Logout</li>
+            </NavLink>
           )}
           {isLoggedIn && (
           <button className={classes.cart} onClick={props.showCartItem}>

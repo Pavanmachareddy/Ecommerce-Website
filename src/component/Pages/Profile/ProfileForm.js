@@ -1,8 +1,12 @@
 import React, { useContext, useRef } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 import { CartContext } from '../../StoreContext/CartContext';
 import classes from './ProfileForm.module.css'
 
 const ProfileForm = () => {
+
+    const navigate = useNavigate();
     const newPasswordInputRef = useRef();
 
     const { contextValue} =useContext(CartContext);
@@ -25,7 +29,9 @@ const ProfileForm = () => {
           }   
         }).then(res => {
             //assumption:Always succeeds!
-        })
+
+            navigate('/');
+        });
     }
   return (
     <form className={classes.form} onSubmit={submitHandler}>

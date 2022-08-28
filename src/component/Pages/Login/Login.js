@@ -7,9 +7,11 @@ const Login = (props) => {
   const { contextValue } = useContext(CartContext);
   console.log(contextValue);
 
+  const navigate = useNavigate();
+
   const loginEmailRef = useRef();
   const loginPassRef = useRef();
-  const navigate = useNavigate();
+  
   const [t, setT] = useState("");
 
   const [isLogin, setIsLogin] = useState(true);
@@ -66,9 +68,10 @@ const Login = (props) => {
         console.log(data);
         setT(data.idToken);
         contextValue.login(data.idToken);
+        navigate("/store");
 
         props.checkLogin(true);
-        navigate("/store");
+        
       })
       .catch((err) => {
         alert(err.message);
@@ -96,7 +99,7 @@ const Login = (props) => {
           {!isLoading && (
             <button>{isLogin ? "Login" : "Create Account"}</button>
           )}
-          {!isLoading && <p>Sending request...</p>}
+          {isLoading && <p>Sending request...</p>}
           <button
             type="button"
             className={classes.toggle}
