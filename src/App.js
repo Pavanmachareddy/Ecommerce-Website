@@ -1,18 +1,19 @@
 import "./App.css";
 import { useState } from "react";
 import Header from "./component/Layout/Header/Header";
-import Store from "./component/Pages/Store";
+import Store from "./component/Pages/Store/Store";
 import Home from "./component/Pages/Home/Home";
 import About from "./component/Pages/About/About";
 import Footer from "./component/Layout/Footer/Footer";
 import CartList from "./Cart/CartList";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route ,Navigate} from "react-router-dom";
 import CartContext from "./component/StoreContext/CartContext";
 import Contact from "./component/Pages/Contact/Contact";
 import Product from "./component/Layout/Products/Product";
 import Login from "./component/Pages/Login/Login";
 
 function App() {
+  const [isLoggedIn,setIsloggedIn] = useState(false);
   const [cartItems, setCartItems] = useState(false);
 
   const CartItems = () => {
@@ -43,12 +44,13 @@ function App() {
       {cartItems && <CartList Close={cartItemsClose} />}
 
       <Routes>
-        <Route exact path="/" element={<Store />} />
+        <Route exact path="/store" element={<Store />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/homepage" element={<Home />} />
         <Route exact path="/contact" element={<Contact  addRequest={addRequestHandler}/>} />
         <Route  path='/product/:id' element={<Product/>}/>
-        <Route  exact path='/login' element={<Login/>}/>
+        <Route  exact path='/login' element={<Login checkLogin={setIsloggedIn}/>}/>
+        {!isLoggedIn && <Route path="*" element={<Navigate to="/login"></Navigate>}></Route>}
       </Routes>
       
       <Footer />

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import classes from "./Cart.module.css";
+import classes from "./CartList.module.css";
 import { Container, Row, Col, Button } from "reactstrap";
-import { Cart } from "../component/StoreContext/CartContext";
+import { CartContext } from "../component/StoreContext/CartContext";
 import { useContext } from "react";
 import { NavLink, useParams } from "react-router-dom";
 
 const CartList = (props) => {
   // const navigate = useNavigate()
   
-  const { cart } = useContext(Cart);
+  const { cart } = useContext(CartContext);
 
 
   const [anchorEl, setAnchorEl] = useState(null);

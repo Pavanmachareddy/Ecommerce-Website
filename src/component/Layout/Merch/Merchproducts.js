@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Cart } from '../../StoreContext/CartContext';
+import { CartContext } from '../../StoreContext/CartContext';
 import classes from './Merchproducts.module.css';
 
 
@@ -20,7 +20,7 @@ const merchArr = [
 ];
 
 const Merchproducts = () => {
-    const {cart,setCart} = useContext(Cart)
+    const {cart,setCart} = useContext(CartContext)
   return (
     <section className={classes.merchSection}>
     {merchArr.map((items) =>{

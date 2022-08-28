@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import classes from './Musicproducts.module.css';
-import { Cart } from '../../StoreContext/CartContext';
+import { CartContext } from '../../StoreContext/CartContext';
 
 const productsArr = [
   {
@@ -33,7 +33,7 @@ const productsArr = [
   },
 ];
 const Musicproducts = (props) =>{
-  const {cart,setCart} = useContext(Cart)
+  const {cart,setCart} = useContext(CartContext)
 
   return(
     <section className={classes.musicSection}>
