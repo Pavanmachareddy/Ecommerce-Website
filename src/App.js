@@ -12,7 +12,6 @@ import Contact from "./component/Pages/Contact/Contact";
 import Product from "./component/Layout/Products/Product";
 import Login from "./component/Pages/Login/Login";
 import UserProfile from "./component/Pages/Profile/UserProfile";
-import StartingPage from "./component/Pages/StartingPage/StartingPage";
 
 function App() {
   const [isLoggedIn,setIsloggedIn] = useState(false);
@@ -46,7 +45,6 @@ function App() {
       {cartItems && <CartList Close={cartItemsClose} />}
 
       <Routes>
-      <Route exact path="/" element={<StartingPage/>} />
       <Route exact path="/profile" element={<UserProfile/>} />
         <Route exact path="/store" element={<Store />} />
         <Route exact path="/about" element={<About />} />

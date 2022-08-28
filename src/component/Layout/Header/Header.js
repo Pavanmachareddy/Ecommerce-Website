@@ -76,7 +76,7 @@ const Header = (props) => {
               className={(navData) => (navData.isActive ? "active" : "")}
               to="/login"
             >
-              <li>Logout</li>
+              <li onClick={logoutHandler}>Logout</li>
             </NavLink>
           )}
           {isLoggedIn && (
