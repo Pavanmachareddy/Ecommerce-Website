@@ -12,7 +12,7 @@ const Login = (props) => {
   const loginEmailRef = useRef();
   const loginPassRef = useRef();
   
-  const [t, setT] = useState("");
+  // const [t, setT] = useState("");
 
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setLoading] = useState(false);
@@ -66,7 +66,7 @@ const Login = (props) => {
       .then((data) => {
         alert("Logged In SuccesFully");
         console.log(data);
-        setT(data.idToken);
+        // setT(data.idToken);
         contextValue.login(data.idToken);
         navigate("/store");
 
@@ -78,9 +78,9 @@ const Login = (props) => {
       });
   };
 
-  useEffect(() => {
-    console.log(contextValue.token);
-  }, [])
+  // useEffect(() => {
+  //   console.log(contextValue.token);
+  // }, [])
 
 
   return (
