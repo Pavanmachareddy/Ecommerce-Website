@@ -4,7 +4,7 @@ import { CartContext } from "../../StoreContext/CartContext";
 import classes from "./Login.module.css";
 
 const Login = (props) => {
-  const { contextValue } = useContext(CartContext);
+  const { cart,setCart,userId,setUserId,contextValue } = useContext(CartContext);
   console.log(contextValue);
 
   const navigate = useNavigate();
@@ -26,6 +26,11 @@ const Login = (props) => {
 
     const enteredLoginEmail = loginEmailRef.current.value;
     const enteredLoginPass = loginPassRef.current.value;
+
+    let userSavedId = (Math.random()+1).toString(36).substring(7)
+    console.log(userSavedId)
+    localStorage.setItem('userId',userSavedId)
+    setUserId(userSavedId)
 
     setLoading(true);
     let url;
@@ -66,6 +71,7 @@ const Login = (props) => {
       .then((data) => {
         alert("Logged In SuccesFully");
         console.log(data);
+        localStorage.setItem('TokenId',data.idToken)
         // setT(data.idToken);
         contextValue.login(data.idToken);
         navigate("/store");

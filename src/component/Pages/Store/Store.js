@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React from "react";
 import Merch  from "../../Layout/Merch/Merch"
 import Music from "../../Layout/Music/Music";
 

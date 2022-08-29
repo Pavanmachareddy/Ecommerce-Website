@@ -8,7 +8,7 @@ import { NavLink, useParams } from "react-router-dom";
 const CartList = (props) => {
   // const navigate = useNavigate()
   
-  const { cart } = useContext(CartContext);
+  const { cart,setCart,useId,setUserId,price} = useContext(CartContext);
 
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -30,6 +30,7 @@ const CartList = (props) => {
         X
       </Button>
       <h2 className={classes.cartHeading}>CART</h2>
+      <h4>Total Price:${price.toFixed(2)}</h4>
 
       <Row>
         <Col xs="4">
@@ -54,7 +55,7 @@ const CartList = (props) => {
                   <NavLink to={`/product/${items.id}`} onClick={ handleClose }>
                     <img
                       className={classes.cartImages}
-                      src={items.imageUrl}
+                      src={items.imageUrl} alt={items.title}
                       // onClick={() => additem(items.id)}
                     />
                     </NavLink>
