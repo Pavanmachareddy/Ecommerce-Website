@@ -55,6 +55,14 @@ const Header = (props) => {
               <li>About</li>
             </NavLink>
           )}
+          {!isLoggedIn && (
+            <NavLink
+              className={(navData) => (navData.isActive ? "active" : "")}
+              to="/login"
+            >
+              <li>About</li>
+            </NavLink>
+          )}
           {isLoggedIn && (
             <NavLink
               className={(navData) => (navData.isActive ? "active" : "")}

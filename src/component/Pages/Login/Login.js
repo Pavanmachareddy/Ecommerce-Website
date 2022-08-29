@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext, useEffect } from "react";
+import React, { useState, useRef, useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../StoreContext/CartContext";
 import classes from "./Login.module.css";

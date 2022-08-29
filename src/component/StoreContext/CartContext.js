@@ -31,15 +31,6 @@ const CartContextProvider = (props) => {
     login: loginHandler,
     logout: logoutHandler,
   };
-  // const cartElements = [
-  //   {
-  //     title: "Colors",
-  //     price: 100,
-  //     imageUrl:
-  //       "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-  //     quantity: 2,
-  //   },
-  // ];
   return (
     <CartContext.Provider value={{cart,setCart,contextValue}}>
       {props.children}
