@@ -34,7 +34,7 @@ function App() {
       setCartItems(true);
       axios
         .get(
-          `https://crudcrud.com/api/e96748c24e794ce1b3cfc61fda23dea9/cart${userId}`
+          `https://crudcrud.com/api/ed73ae893df54c24a0c603c6fb717516/cart${userId}`
         )
         .then((response) => {
           // console.log(`Axios: ${response}`);
@@ -104,6 +104,8 @@ function App() {
           <Route path="*" element={<Navigate to="/login"></Navigate>}></Route>
         )}
       </Routes>
+
+      {isLoggedIn && <button className="cartbtn"  onClick={CartItems}>See the Cart</button>}
 
       <Footer />
     </>

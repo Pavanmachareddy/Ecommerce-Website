@@ -5,14 +5,14 @@ import { NavLink } from "react-router-dom";
 import "./NavLink.css";
 
 const Header = (props) => {
-  const { cart,contextValue } = useContext(CartContext);
+  const { cart, contextValue } = useContext(CartContext);
 
   const isLoggedIn = contextValue.isLoggedIn;
 
   const logoutHandler = () => {
     contextValue.logout();
     //optional: redirect the user
-  }
+  };
   // console.log(cart)
   return (
     <div>
@@ -21,7 +21,7 @@ const Header = (props) => {
           {/* <a href="/homepage"><li>HOME</li></a>
           <Link to="/"><li>STORE</li></Link>
           <Link to="/about"><li>ABOUT</li></Link> */}
-          
+
           {isLoggedIn && (
             <NavLink
               className={(navData) => (navData.isActive ? "active" : "")}
@@ -30,7 +30,7 @@ const Header = (props) => {
               <li>Profile</li>
             </NavLink>
           )}
-          
+
           {isLoggedIn && (
             <NavLink
               className={(navData) => (navData.isActive ? "active" : "")}
@@ -88,11 +88,12 @@ const Header = (props) => {
             </NavLink>
           )}
           {isLoggedIn && (
-          <button className={classes.cart} onClick={props.showCartItem}>
-            <li>
-              cart<span className={classes.cartnumber}>{cart.length}</span>
-            </li>
-          </button>)}
+            <button className={classes.cart} onClick={props.showCartItem}>
+              <li>
+                cart<span className={classes.cartnumber}>{cart.length}</span>
+              </li>
+            </button>
+          )}
         </ul>
 
         <h1>The Generics</h1>

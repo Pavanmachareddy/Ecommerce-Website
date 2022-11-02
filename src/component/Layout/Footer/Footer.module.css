@@ -14,11 +14,3 @@
     margin:0 auto;
     font-family: 'Montserrat';
 }
-
-.footericons{
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-}

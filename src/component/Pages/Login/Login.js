@@ -1,17 +1,18 @@
-import React, { useState, useRef, useContext} from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../StoreContext/CartContext";
 import classes from "./Login.module.css";
 
 const Login = (props) => {
-  const { cart,setCart,userId,setUserId,contextValue } = useContext(CartContext);
+  const { cart, setCart, userId, setUserId, contextValue } =
+  useContext(CartContext);
   console.log(contextValue);
 
   const navigate = useNavigate();
 
   const loginEmailRef = useRef();
   const loginPassRef = useRef();
-  
+
   // const [t, setT] = useState("");
 
   const [isLogin, setIsLogin] = useState(true);
@@ -27,19 +28,19 @@ const Login = (props) => {
     const enteredLoginEmail = loginEmailRef.current.value;
     const enteredLoginPass = loginPassRef.current.value;
 
-    let userSavedId = (Math.random()+1).toString(36).substring(7)
-    console.log(userSavedId)
-    localStorage.setItem('userId',userSavedId)
-    setUserId(userSavedId)
+    let userSavedId = (Math.random() + 1).toString(36).substring(7);
+    console.log(userSavedId);
+    localStorage.setItem("userId", userSavedId);
+    setUserId(userSavedId);
 
     setLoading(true);
     let url;
     if (isLogin) {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyC606xgg6EBWOYZfE4iv41xYa59H83vk0U";
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDzCs8RmN9nrIBGq7S29BvVcvef7exgKCo";
     } else {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC606xgg6EBWOYZfE4iv41xYa59H83vk0U";
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDzCs8RmN9nrIBGq7S29BvVcvef7exgKCo";
     }
     fetch(url, {
       method: "POST",
@@ -71,13 +72,13 @@ const Login = (props) => {
       .then((data) => {
         alert("Logged In SuccesFully");
         console.log(data);
-        localStorage.setItem('TokenId',data.idToken)
+        localStorage.setItem("TokenId", data.idToken);
         // setT(data.idToken);
         contextValue.login(data.idToken);
-        navigate("/store");
+         navigate("/store");
+        // window.reload.location("/store")
 
         props.checkLogin(true);
-        
       })
       .catch((err) => {
         alert(err.message);
@@ -87,7 +88,6 @@ const Login = (props) => {
   // useEffect(() => {
   //   console.log(contextValue.token);
   // }, [])
-
 
   return (
     <section className={classes.auth}>

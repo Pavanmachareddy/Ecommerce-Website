@@ -28,6 +28,16 @@
   color: #61dafb;
 }
 
+.cartbtn{
+  display: flex;
+    padding: 15px;
+    background-color: #777;
+    border: none;
+    color: #56CCF2;
+    border-radius: 7px;
+    margin: auto;
+    cursor: pointer;
+}
 
 
 

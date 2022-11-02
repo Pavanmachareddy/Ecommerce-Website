@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
-import { Table } from 'reactstrap';
-import { CartContext } from '../../StoreContext/CartContext'
+import React, { useContext } from "react";
+import { Table } from "reactstrap";
+import { CartContext } from "../../StoreContext/CartContext";
 
 const Product = () => {
-    const {cart} = useContext(CartContext)
+  const { cart } = useContext(CartContext);
   return (
     <div className="container mt-2">
       <div>
@@ -13,11 +13,8 @@ const Product = () => {
             {cart.map((ele) => {
               return (
                 <Table>
-                  <div >
-                    <img
-                      src={ele.imageUrl}
-                      alt=""
-                    />
+                  <div>
+                    <img src={ele.imageUrl} alt="" />
                   </div>
                   <div>
                     <>
@@ -31,18 +28,17 @@ const Product = () => {
                           </p>
                           <p>
                             <strong>Quantity</strong> : {ele.quantity}
-                           </p>
+                          </p>
                           <p>
                             <strong>Total</strong> : ₹ {ele.price}
                           </p>
-                          <div className="mt-5 d-flex justify-content-between align-items-center" style={{width:100,cursor:"pointer",background:"#ddd",color:"#111"}}>
+                          {/* <div className="mt-5 d-flex justify-content-between align-items-center" style={{width:100,cursor:"pointer",background:"#ddd",color:"#111"}}>
                           <span style={{fontSize:24}} >-</span>
                           <span style={{fontSize:22}}>{ele.qnty}</span>
                           <span style={{fontSize:24}}>+</span>
 
-                          </div>
+                          </div> */}
                         </td>
-                        
                       </tr>
                     </>
                   </div>
@@ -53,7 +49,7 @@ const Product = () => {
         </section>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;
