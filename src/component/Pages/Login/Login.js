@@ -4,8 +4,9 @@ import { CartContext } from "../../StoreContext/CartContext";
 import classes from "./Login.module.css";
 
 const Login = (props) => {
+  console.log(props.checkLogin, "llllllllllllllllllllllllllllllll");
   const { cart, setCart, userId, setUserId, contextValue } =
-  useContext(CartContext);
+    useContext(CartContext);
   console.log(contextValue);
 
   const navigate = useNavigate();
@@ -13,9 +14,9 @@ const Login = (props) => {
   const loginEmailRef = useRef();
   const loginPassRef = useRef();
 
-  // const [t, setT] = useState("");
 
-  const [isLogin, setIsLogin] = useState(true);
+
+  const [isLogin, setIsLogin] = useState(false);
   const [isLoading, setLoading] = useState(false);
 
   const switchAuthModeHandler = () => {
@@ -54,29 +55,30 @@ const Login = (props) => {
       },
     })
       .then((res) => {
-        setIsLogin(false);
         if (res.ok) {
           return res.json();
         } else {
           return res.json().then((data) => {
             let errorMessage = "Authentication Failed!";
-            // if(data && data.error && data.error.message){
-            // errorMessage = data.error.messsage;
-            // }
-            // alert(errorMessage);
             throw new Error(errorMessage);
-            // console.log(data);
           });
         }
       })
       .then((data) => {
-        alert("Logged In SuccesFully");
+        setLoading(true);
+        setIsLogin(true);
+        if (isLogin) {
+          contextValue.isLoggedIn = true
+          alert("Logged In SuccesFully");
+        } else {
+          alert("Sign up SuccesFully");
+        }
+
         console.log(data);
         localStorage.setItem("TokenId", data.idToken);
-        // setT(data.idToken);
-        contextValue.login(data.idToken);
-         navigate("/store");
-        // window.reload.location("/store")
+        if (isLogin) {
+          navigate("/store");
+        }
 
         props.checkLogin(true);
       })
@@ -85,9 +87,6 @@ const Login = (props) => {
       });
   };
 
-  // useEffect(() => {
-  //   console.log(contextValue.token);
-  // }, [])
 
   return (
     <section className={classes.auth}>
@@ -102,10 +101,7 @@ const Login = (props) => {
           <input type="password" id="password" required ref={loginPassRef} />
         </div>
         <div className={classes.actions}>
-          {!isLoading && (
-            <button>{isLogin ? "Login" : "Create Account"}</button>
-          )}
-          {isLoading && <p>Sending request...</p>}
+          <button>{isLogin ? "Login" : "Create Account"}</button>
           <button
             type="button"
             className={classes.toggle}

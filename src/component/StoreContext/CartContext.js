@@ -9,7 +9,7 @@ export const CartContext = React.createContext({
 
 const CartContextProvider = (props) => {
   const initialToken = localStorage.getItem("token");
-
+   console.log(initialToken,"initialToken")
   const [cart, setCart] = useState([]);
   const [userId, setUserId] = useState("");
   const [price, setPrice] = useState(0);

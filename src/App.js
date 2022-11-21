@@ -19,17 +19,16 @@ function App() {
   const [cartItems, setCartItems] = useState(false);
 
   const { cart, setCart, userId, setUserId } = useContext(CartContext);
-
+  console.log(isLoggedIn, "==========login -app");
   useEffect(() => {
     if (localStorage.getItem("userId")) {
-      console.log(localStorage.getItem("userId"))
+      console.log(localStorage.getItem("userId"));
       setUserId(localStorage.getItem("userId"));
     }
   }, [setUserId]);
 
-
   const CartItems = () => {
-    // setCartItems(true);
+    
     if (localStorage.getItem("userId")) {
       setCartItems(true);
       axios
@@ -37,9 +36,7 @@ function App() {
           `https://crudcrud.com/api/ed73ae893df54c24a0c603c6fb717516/cart${userId}`
         )
         .then((response) => {
-          // console.log(`Axios: ${response}`);
           console.log(`userId: ${userId}`);
-          // console.log("Response Data ${response.data}");
           response.data.map((item) => {
             console.log(`Response Data before ${item}`);
             setCart((prevState) => [...prevState, item]);
@@ -60,7 +57,6 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem("TokenId")) {
-      setIsloggedIn(true);
     }
   }, []);
 
@@ -81,7 +77,7 @@ function App() {
 
   return (
     <>
-      <Header showCartItem={CartItems} />
+      <Header showCartItem={CartItems} isLoggedIn={isLoggedIn} setIsloggedIn={setIsloggedIn} />
       {cartItems && <CartList Close={cartItemsClose} />}
 
       <Routes>
@@ -105,7 +101,11 @@ function App() {
         )}
       </Routes>
 
-      {isLoggedIn && <button className="cartbtn"  onClick={CartItems}>See the Cart</button>}
+      {isLoggedIn && (
+        <button className="cartbtn" onClick={CartItems}>
+          See the Cart
+        </button>
+      )}
 
       <Footer />
     </>
