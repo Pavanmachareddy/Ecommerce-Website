@@ -1,18 +1,21 @@
-import "./App.css";
+ import "./App.css";
 import { useContext, useEffect, useState } from "react";
-import axios from "axios";
-import Header from "./component/Layout/Header/Header";
-import Store from "./component/Pages/Store/Store";
-import Home from "./component/Pages/Home/Home";
-import About from "./component/Pages/About/About";
-import Footer from "./component/Layout/Footer/Footer";
-import CartList from "./Cart/CartList";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { CartContext } from "./component/StoreContext/CartContext";
-import Contact from "./component/Pages/Contact/Contact";
-import Product from "./component/Layout/Products/Product";
-import Login from "./component/Pages/Login/Login";
-import UserProfile from "./component/Pages/Profile/UserProfile";
+import axios from "axios";
+import Contact from "../src/component/Pages/Contact/Contact"
+import Footer from "../src/component/Layout/Footer/Footer"
+import {CartContext} from "../src/component/StoreContext/CartContext"
+import Home from "../src/component/Pages/Home/Home";
+import About from "../src/component/Pages/About/About"
+import Product from "../src/component/Layout/Products/Product"
+import Login from "../src/component/Pages/Login/Login"
+import UserProfile from "../src/component/Pages/Profile/UserProfile"
+import SignUpPage from "../src/component/Pages/Login/signUp"
+import Store from "../src/component/Pages/Store/Store"
+import CartList from "../src/Cart/CartList"
+import Header from "../src/component/Layout/Header/Header"
+
+
 
 function App() {
   const [isLoggedIn, setIsloggedIn] = useState(false);
@@ -81,6 +84,7 @@ function App() {
       {cartItems && <CartList Close={cartItemsClose} />}
 
       <Routes>
+        <Route path="/" element={<SignUpPage />}></Route>
         <Route exact path="/profile" element={<UserProfile />} />
         <Route exact path="/store" element={<Store />} />
         <Route exact path="/about" element={<About />} />
@@ -97,7 +101,7 @@ function App() {
           element={<Login checkLogin={setIsloggedIn} />}
         />
         {!isLoggedIn && (
-          <Route path="*" element={<Navigate to="/login"></Navigate>}></Route>
+          <Route path="/login" element={<Navigate to="/login"></Navigate>}></Route>
         )}
       </Routes>
 

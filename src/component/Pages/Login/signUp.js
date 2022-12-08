@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../StoreContext/CartContext";
 import classes from "./Login.module.css";
 
-const Login = (props) => {
+const SignUpPage = (props) => {
   console.log(props.checkLogin, "llllllllllllllllllllllllllllllll");
   const { cart, setCart, userId, setUserId, contextValue } =
     useContext(CartContext);
@@ -35,14 +35,14 @@ const Login = (props) => {
     setUserId(userSavedId);
 
     setLoading(true);
-    let url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDzCs8RmN9nrIBGq7S29BvVcvef7exgKCo";
-  
+    let url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDzCs8RmN9nrIBGq7S29BvVcvef7exgKCo";
+    
     fetch(url, {
       method: "POST",
       body: JSON.stringify({
         email: enteredLoginEmail,
         password: enteredLoginPass,
-        returnSecureToken: true,
+        // returnSecureToken: true,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -59,34 +59,28 @@ const Login = (props) => {
         }
       })
       .then((data) => {
-        setLoading(true);
-        setIsLogin(true);
-        if (isLogin) {
-          contextValue.isLoggedIn = true
-          alert("Logged In SuccesFully");
-        } 
-        // else {
+        // setLoading(true);
+        setIsLogin(false);
+        // if (isLogin) {
+        //   contextValue.isLoggedIn = true
+        //   alert("Logged In SuccesFully");
+        // } else {
         //   alert("Sign up SuccesFully");
-        // } 
+        // }
 
         console.log(data);
         localStorage.setItem("TokenId", data.idToken);
-        // if (isLogin) {
-          navigate("/store");
-        // }
-
-        props.checkLogin(true);
+         navigate("/login");
+         props.checkLogin(true);
       })
       .catch((err) => {
         alert(err.message);
       });
-  };
-
+  }; 
 
   return (
     <section className={classes.auth}>
-      {/* <h1>{isLogin ? "Login" : "Sign Up"}</h1> */}
-      <h1>Login</h1>
+      <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="email">Your Email</label>
@@ -97,9 +91,7 @@ const Login = (props) => {
           <input type="password" id="password" required ref={loginPassRef} />
         </div>
         <div className={classes.actions}>
-          {/* <button>{isLogin ? "Login" : "Create Account"}</button> */}
-                    <button type="submit">LogIn</button>
-
+          <button>{isLogin ? "Login" : "Create Account"}</button>
           <button
             type="button"
             className={classes.toggle}
@@ -113,4 +105,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default SignUpPage;
